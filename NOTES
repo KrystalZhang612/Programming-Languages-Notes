@@ -1,0 +1,183 @@
+Brief history of programming languages
+Programming language paradigms
+Programming language design criteria
+Basic syntax:
+Interpreter vs. compiler
+Lexical and syntactic analysis 3. Context-free
+BNF
+EBNF
+Parsing:
+Parse tree vs. derivation
+Ambiguous grammar
+Recursive, left-recursive, right-recursive grammars
+Recursive-descent parsing
+Basic
+Static vs. dynamic binding
+Static vs. dynamic scoping
+Environment - static, stack, heap
+Data types
+
+Brief History of Programming Languages
+High Level Languages: Ruby, Python, C++, C Low Level: Assembly Machine
+Functional: Lisp, Haskell
+Machine Independent Language: This means that it can run on any machine. Ex: Java, runs on any machine
+Machine Dependent Language: Depends on the Machine that you are running on Ex: Some languages run on AMD and some can run on x86 etc
+Machine language (1940s)
+- Written in binary, general-purpose operations to flip certain switches
+- Cons: machine dependent, not human readable
+Assembly language (1950s)
+- Use mnemonic symbols for instruction codes and memory locations
+- Some automation
+- Assembler: translates assembly to machine language
+- Loader: loads machine code into computer memory
+- Pros: more human readable than machine language
+- Cons: machine dependent, spends many operations on moving data between memory
+and registers FORTRAN (1950s)
+- FORmula TRANslation
+- Similar to assembly language, has some automation
+- Pros: more human readable than assembly language, support for algebra and floats
+- Cons: machine dependent, no control flow or data structures
+ALGOL (1960)
+- ALGOrithmic Language
+- Has many basic features
+- Structure control statements
+- Data of different numeric types- ints, floats
+
+
+- Array data structure
+- Procedures, including recursive procedures
+- Formal specification
+- Machine independent- requires that all hardware provide a compiler for ALGOL von Neumann architecture
+- Main feature: data and instructions share the same memory
+- Data and instructions cannot be transferred to or from CPU simultaneously
+- Values of variables are changed → difficult to debug large programs
+- Cannot be easily mapped to new hardware architectures with parallel processing
+Programming Paradigms
+Definition: Programming paradigms are a way to classify a programming languages based on the features it offers
+There are two main types of programming paradigms
+1. Imperative Languages
+- Sequential execution of instructions
+- Variables representing memory locations
+- Assignments to change the values of the variables
+- von Neumann bottleneck:
+- If computation is sequential, you have to execute the program in order
+- Runtime can improve using parallel processing
+2. Declarative Languages
+- Functional: Application/Program derived from functions only
+- Logic: Type of programming based on logical circuits to control facts and rules
+- Mathematical: Mathematical models used to solve problems
+- Reactive: Asynchronous programming logic to handle real time updates
+Programming Language Design Criteria
+Efficiency of execution
+- Using as little memory as possible, running as fast as possible
+- Early FORTRAN
+- Can the program be translated in an efficient way?
+Writability and readability
+- Designing for clear, logical expression
+- <not sure what this line about COBOL means>
+- Algol60, COBOL
+Regularity
+- How well are the features integrated?
+- More regularity: you can do things that are sensible in mathematical terms
+- You can cast an int to a double, because the set of doubles contains all ints
+- However, you cannot cast a double to an int, because not all doubles are ints
+- Less regularity: you are restricted in nonsensical ways and have to work around it
+  
+- You cannot add a float and an int to get a float, even though it makes mathematical sense
+Expressiveness
+- Easy to write complex procedures and structures
+Uniformity
+- Do similar things behave in a similar way
+
+Basic Syntax
+Interpreter vs Compiler Interpreter:
+Two step process- compiler turns source code into executable, processor runs a
+program from executable code and input
+- Compiler structure:
+- Lexical analysis
+- Optimization
+- Code generation
+- C/C++
+Lexical and Syntactical Analysis Lexical analysis:
+- Turning raw input text into a list of lexemes, which are further categorized into tokens
+- Lexemes- “words” in a program
+- Tokens- categories of lexemes
+- Alphabet- set of characters that can be used in a language
+- In lexical analysis, the analyzer is looking for
+1. Keywords: these have special meanings in a programming language
+2. Reserved: these are reserved words considered by the language and cannot be
+used as identifiers
+3. Identifiers: variable names, function names
+4. Literals, constants: 100, 1.0, “foo”
+5. Operators: +, -, *, /
+6. Others: (, ), {, }, <
+Syntactic analysis:
+- Determines sentence structure
+- Sentence- string of lexemes over some alphabet
+- Grammar- finite set of rules that defines the syntax of a language
+- Meta-language- a language used to describe another language, defines recognizers and generators
+- Recognizers- accept any legal sentence- base of a compiler
+- Generators- create all legal sentences
+- Language- set of all sentences that adheres to the syntax
+- may be infinitely large
+- Taking a list of tokens and producing a parse tree from it, this is used to determine
+sentence structure
+Context-Free Grammars
+- Regular grammar:
+- X→aorX→aYonly
+- X, Y = nonterminal, a = terminal - Context free grammar:
+- X→𝛾
+- X = nonterminal, 𝛾 = string of terminals and nonterminals
+- Regular grammars are simpler than context free grammars, which are simpler than
+context sensitive grammars
+- We only care about context free grammars for this class
+BNF
+Backus-Naur Form
+- Exactly one non-terminal on the LHS of the ::=
+- On the RHS of ::= a sequence/sequences of non-terminal mixed with terminals
+EBNF
+Extended Backus-Naur Form
+1. Repetition:
+{<digit>} => zero or more digit
+<num> ::= {<digit>} <digit> => one or more digit
+2. Optional Part
+[else <statement>] => optional
+<if_statement> ::= if <condition> then <statement> [else <statement>]
+3. Grouping
+<expression> ::= <expression> (+|-|*) <expression>
+BNF → EBNF
+
+Parsing
+Bottom-up parsing / Shift-reduce parser
+- Match input with RHS of grammar
+- When match occurs, replace RHS with non-terminal on left
+Top-down parsing
+- Non-terminals are expanded to match incoming tokens
+- Multiple variants, including recursive-descent parsing
+Parse tree vs Derivation Derivation
+- A trace of how a sentence is constructed in a language, beginning with the top level rule
+
+Parse tree
+- Displays the result of the derivation graphically, using a tree
+- Order of terminals in the parse tree is exactly the same as the last line of the derivations
+
+Ambiguous Grammar
+If the language has more than one unique parse tree, the grammar is ambiguous In an ambiguous language, operators can have higher precedence than intended
+- 1+(2*3)vs(1+2)*3
+Recursive Grammars: left-recursive, right-recursive Left-recursive:
+- LHS term is always on the left side of the RHS term, and RHS terms can only contain the LHS term at most once
+- ex:X→XY|Y,whereYdoesnotcontainX
+- All left-recursive languages are unambiguous
+Right-recursive:
+LHS term is always on the right side of the RHS term, and RHS terms can only contain the LHS term at most once
+- ex:X→YX|Y,whereYdoesnotcontainX
+- All right-recursive languages are unambiguous
+Recursive-descent Parsing
+- Turn each non-terminal into a recursive procedure
+- Procedure based on the right-hand-side of its production rule
+- Match tokens with input tokens from the scanner
+- Non-terminals are calls to the procedures corresponding to the terminals
+- Use EBNF notation instead of BNF
+- More easily translated to code
+- Can avoid left-recursion infinite loops in BNF FIRST Sets
+- FIRST(X) is the set of all terminals that can begin a string derived from X
