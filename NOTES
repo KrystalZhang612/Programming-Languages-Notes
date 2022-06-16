@@ -181,3 +181,70 @@ Recursive-descent Parsing
 - More easily translated to code
 - Can avoid left-recursion infinite loops in BNF FIRST Sets
 - FIRST(X) is the set of all terminals that can begin a string derived from X
+
+- Single-symbol lookahead parsing is only possible if the FIRST sets of all non-terminals is
+disjoint
+- Check 06-parsing for a full parser example, I don’t want to copy paste five pages lmao
+Semantics
+- Location: memory addresses where the value is stored
+- Value: any storable quantity
+- Type: determines possible values and operations
+- Scope: the region of the program where a variable is accessible
+- Lifetime: time duration where a variable is valid
+Static vs Dynamic Binding Binding
+- associating an attribute with a name
+- Binding times:
+- Language definition time
+- Language implementation time
+- Compile time
+- Link time
+- Load time
+
+- Execution time Static binding:
+- Binding before execution (first five binding times)
+- Associated with having to declare types with names: int x, char func()
+- Usually leads to more efficient execution
+- Less work being done at runtime
+Dynamic binding:
+- Binding during execution
+- Usually leads to more flexibility for the programmer
+- May lead to errors not caught until runtime
+Static vs Dynamic Scoping Scoping:
+- Region of the program over which the binding applies Static scoping:
+- scope of all variables is determined at compile time Dynamic scoping:
+- scope of all variables is determined at run time
+Static scoping:
+Since int x and void f() are declared in the same scope, f() will always increment that x, at both lines 11 and 14. Line 12 will print 10 and Line 15 will print 26.
+Dynamic scoping:
+Since binding happens at runtime, the most recent declaration of a variable will be used when f() is called. Line 11 will print 13 and Line 14 will print 23.
+
+Environment - Static, Stack, Heap
+- Environment: the collection of bindings between names and locations
+- Static: variables that will not change or need to be known throughout the run time
+- Stack: parameters, local variables, and activation records
+- Heap: “unstructured” memory
+- Utilized for Dynamically Allocated Data
+- Ex: Everything is dynamically allocated in Python, which does not use
+local variables. Everything is an object reference in the heap.
+Data types
+- A set of values: Ex: int x
+- Other types (long, long long, short etc)
+- Most types are 32 bit but with specifiers can be up to 128 bit (rust i128 type and long
+long type C++)
+Type Checking: Determines if the type is consistent
+- Int x=0, x=”hello” (inconsistent type) Type reference: infers type of expression User defined Types:
+- C++: typedef
+- Could be types like pair, point, vector, etc
+- Python: class
+- Rust: type
+Type System:
+- A logical system comprising a set of rules that assigns a property called a type to the
+various constructs of a computer program like variables, expression, functions and
+modules Strongly Typed:
+- Strongly typed is a concept used to refer to a programming language that enforces strict restrictions on intermixing of values with different data types. When such restrictions are violated and error (exception) occurs.
+Dynamically typed:
+- Not strongly typed
+- Disadvantage: slow
+Enumerated Type:
+- An enumerated type is a type whose legal values consist of a fixed set of constants.
+Common examples include compass directions, which take the values North, South, East and West and days of the week, which take the values Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, and Saturday.
